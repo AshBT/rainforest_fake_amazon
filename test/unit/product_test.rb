@@ -32,4 +32,38 @@ class ProductTest < ActiveSupport::TestCase
     refute @p.valid?
   end
 
+  test "must have a price_in_dollars" do
+    @p.price_in_cents = nil # since the factory creates a product with a price
+
+    @p.price_in_dollars = nil
+    refute @p.valid?
+  end
+
+  test "update cents value from price_in_dollars correctly" do
+    @p.price_in_cents = 999
+    assert_equal 9.99, @p.price_in_dollars
+  end
+
+  test "must refute invalid price_in_dollars" do
+    @p.price_in_cents = nil
+    @p.price_in_dollars = "abc"
+
+    assert_equal nil, @p.price_in_dollars
+    refute @p.valid?
+  end
+
+  test "must handle many decimal places price_in_dollars" do
+    @p.price_in_cents = nil
+    @p.price_in_dollars = "12.90123"
+
+    assert_equal 12.90, @p.price_in_dollars
+    assert_equal 1290, @p.price_in_cents
+    assert @p.valid?
+  end
+
+  # test "dollar conversion is not performed for empty/blank cents value" do
+  #     @p
+  #   refute @p.valid?
+  # end
+
 end
