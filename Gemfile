@@ -24,8 +24,8 @@ gem 'jquery-rails'
 
 group :test, :development do
 	gem 'factory_girl_rails'
-	gem 'redgreen'
-	gem 'test-unit', '1.2.3'
+	# gem 'redgreen'
+	# gem 'test-unit', '1.2.3'
 
 end
 
