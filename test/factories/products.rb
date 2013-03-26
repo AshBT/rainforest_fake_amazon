@@ -3,15 +3,15 @@
 
 FactoryGirl.define do
 	factory :product do
-		name "MyString"
-		description "My Text"
-		price_in_cents 1
+		name "Adidas Shoes"
+		description "These are size 11 shoes."
+		price_in_cents 10000
 	end
 
 	factory :second_product, :class => Product do
-		name "This is a cheaper version of product"
-		description "My Text"
-		price_in_cents 1
+		name "Nike shoes"
+		description "This is a cheaper shoe"
+		price_in_cents 6000
 	end
 
 end

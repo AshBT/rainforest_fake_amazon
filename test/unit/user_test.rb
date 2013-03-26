@@ -34,4 +34,10 @@ class UserTest < ActiveSupport::TestCase
     assert_equal ["has already been taken"], second_user.errors[:email]
   end
 
+  test "users must have a password and a confirmation on create" do
+    user2 = FactoryGirl.build(:user, :password => "", :password_confirmation => "")
+    user2.save
+    refute user2.valid?
+  end
+
 end
