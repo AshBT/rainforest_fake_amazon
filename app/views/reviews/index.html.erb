@@ -12,10 +12,10 @@
 
 <% @reviews.each do |review| %>
   <tr>
-    <td><%= review.user %></td>
-    <td><%= review.product %></td>
+    <td><%= review.user.name %></td>
+    <td><%= review.product.name %></td>
     <td><%= review.comment %></td>
-    <td><%= link_to 'Show', review %></td>
+    <td><%= link_to 'Show', product_review_path(review.product, review) %></td>
     <td><%= link_to 'Edit', edit_review_path(review) %></td>
     <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
